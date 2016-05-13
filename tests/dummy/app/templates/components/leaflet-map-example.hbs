@@ -1,0 +1,29 @@
+<h3>fitBoundsOptions and panOptions</h3>
+
+<p>To pass <a href="http://leafletjs.com/reference.html#map-panoptions">fitBoundsOptions</a> and <a href="http://leafletjs.com/reference.html#map-panoptions">panOptions</a> to leaflet-map, use <strong>hash</strong> helper:</p>
+
+{{#code-block language="handlebars"}}
+\{{#leaflet-map
+  lat=lat
+  lng=lng
+  zoom=zoom
+  fitBoundsOptions=(hash
+    padding=(point 10 15)
+    maxZoom=10
+  )
+  panOptions=(hash
+    animate=true
+    easeLinearity=4.25
+  )
+  as |layers|}}
+
+  \{{layers.tile url="http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png"}}
+
+  \{{#layers.marker location=emberConfLocation}}
+    <h3>The Oregon Convention Center</h3>
+    777 NE Martin Luther King Jr Blvd<br>
+    Portland, OR 97232
+  \{{/layers.marker}}
+
+\{{/leaflet-map}}
+{{/code-block}}
